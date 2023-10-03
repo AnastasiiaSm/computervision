@@ -9,7 +9,7 @@
 
 ### Задание 1
 
-Было сделано ещё на паре в [колабе]([https://www.example.com](https://colab.research.google.com/drive/16GnNUcuWzBtDTKEWHnwgNe5_j92ywZzj?usp=sharing)https://colab.research.google.com/drive/16GnNUcuWzBtDTKEWHnwgNe5_j92ywZzj?usp=sharing)
+Было сделано ещё на паре в [колабе](https://colab.research.google.com/drive/16GnNUcuWzBtDTKEWHnwgNe5_j92ywZzj?usp=sharing)
 
 ### Задание 2
 
