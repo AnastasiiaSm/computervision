@@ -97,6 +97,16 @@ blurred_alot_img = cv2.GaussianBlur(threshold_img, (49, 49), 0)
 subtracted_img = cv2.subtract(threshold_img, blurred_alot_img)
 _, subtracted_img = cv2.threshold(subtracted_img, 100, 255, cv2.THRESH_BINARY)
 
+for c_img in canny_img, subtracted_img:
+    cnts = cv2.findContours(c_img.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
+    for c in cnts:
+        # Compute the center of the contour
+        M = cv2.moments(c)
+        cX = int(M["m10"] / M["m00"])
+        cY = int(M["m01"] / M["m00"])
+        # Draw the center of the shape on the image
+        cv2.circle(c_img, (cX, cY), 3, (255, 255, 255), -1)
+
 # Plot results
 plt.figure('Results')
 
@@ -104,8 +114,8 @@ plt.figure('Results')
 plt.subplot(2, 3, 1), plt.imshow(img, aspect='auto'), plt.title('Original image')
 plt.subplot(2, 3, 2), plt.imshow(threshold_img, cmap='gray', aspect='auto'), plt.title('Grayscale HSV threshold image')
 plt.subplot(2, 3, 3), plt.imshow(blurred_img, cmap='gray', aspect='auto'), plt.title('Blurred image')
-plt.subplot(2, 3, 5), plt.imshow(canny_img, cmap='gray', aspect='auto'), plt.title('Edges via Canny image')
-plt.subplot(2, 3, 6), plt.imshow(subtracted_img, cmap='gray', aspect='auto'), plt.title('Edges via Subtraction image')
+plt.subplot(2, 3, 4), plt.imshow(canny_img, cmap='gray', aspect='auto'), plt.title('Edges via Canny image')
+plt.subplot(2, 3, 5), plt.imshow(subtracted_img, cmap='gray', aspect='auto'), plt.title('Edges via Subtraction image')
 
 plt.show()
 
